@@ -24,6 +24,7 @@
       border-radius: 12px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
       padding: 32px 28px;
+      box-sizing: border-box;
     }
     .blog-details-title {
       font-size: 2rem;
@@ -42,17 +43,90 @@
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: 22px;
+      display: block;
     }
     .blog-details-content {
       color: #444;
       font-size: 1.08rem;
       line-height: 1.7;
     }
+    @media (max-width: 900px) {
+      .blog-details-container {
+        max-width: 98vw;
+        padding: 18px 6px;
+        margin: 50px auto 20px auto;
+      }
+    }
     @media (max-width: 700px) {
-      .blog-details-container { padding: 14px 4px; }
-      .blog-details-title { font-size: 1.2rem; }
-      .blog-details-meta { font-size: 0.95rem; }
-      .blog-details-content { font-size: 0.98rem; }
+      .blog-details-container { padding: 10px 2px; }
+      .blog-details-title { font-size: 1.15rem; }
+      .blog-details-meta { font-size: 0.92rem; }
+      .blog-details-content { font-size: 0.97rem; }
+      .blog-details-img { max-height: 160px; }
+    }
+    @media (max-width: 480px) {
+      .blog-details-container { padding: 4px 0; }
+      .blog-details-title { font-size: 1.01rem; }
+      .blog-details-meta { font-size: 0.8rem; }
+      .blog-details-content { font-size: 0.89rem; }
+      .blog-details-img { max-height: 90px; }
+    }
+    /* Animated background and headings */
+    .section-banner .scrolling-text {
+      font-size: 7rem;
+      line-height: 1;
+    }
+    @media (max-width: 1100px) {
+      .section-banner .scrolling-text { font-size: 4.5rem; }
+    }
+    @media (max-width: 700px) {
+      .section-banner .scrolling-text { font-size: 2.7rem; }
+      .section-banner .heading-title { font-size: 1.2rem; }
+      .section-banner .subtitle { font-size: 0.98rem; }
+    }
+    @media (max-width: 480px) {
+      .section-banner .scrolling-text { font-size: 1.7rem; }
+      .section-banner .heading-title { font-size: 1rem; }
+      .section-banner .subtitle { font-size: 0.85rem; }
+    }
+    .floating-contact-buttons {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99999 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      pointer-events: auto;
+    }
+    .fab-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      transition: background 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      z-index: 99999 !important;
+    }
+    .fab-btn.whatsapp { background: #25D366; }
+    .fab-btn.call { background: #253b2f; }
+    .fab-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.28); }
+    @media (max-width: 600px) {
+      .floating-contact-buttons {
+        bottom: 16px;
+        right: 16px;
+        gap: 12px;
+      }
+      .fab-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -164,6 +238,24 @@
     </header>
     <!--Header Section ======================-->
 
+    <!-- Animated Background Text Section -->
+    <section class="section-banner position-relative pt-60">
+      <div class="section-full-width">
+        <div class="section-title-wrapper position-relative">
+          <div class="scroll-move">
+            <span class="scrolling-text display-1 fw-extra-bold stroke-title text-stroke stroke-opacity-20 stroke-primary lh-1">Blog Details</span>
+          </div>
+          <div class="container">
+            <div class="section-title section-separator">
+              <h2 class="fw-extra-bold heading-title separator lh-1">Inspiration & Knowledge</h2>
+              <p class="fs-4 fw-semibold mb-0 subtitle subtitle-width">Deep dives, expert tips, and stories from 7F Design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Animated Background Text Section -->
+
     <main>
       <div class="blog-details-container" id="blog-details-content">
         <!-- Blog content will be injected here by JS -->
@@ -257,25 +349,25 @@
         <i class="fab fa-whatsapp"></i>
       </a>
       <a href="tel:+917982432663" class="fab-btn call" aria-label="Call Us">
-        <i class="fas fa-phone-alt"></i>
+        <i class="fas fa-phone-alt" style="transform: scaleX(-1);"></i>
       </a>
     </div>
 
   </div>
   <!-- pages -->
 
-  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-  <script src="assets/js/jquery-3.7.0.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/swiper-bundle.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/anime.min.js"></script>
-  <script src="assets/js/animate.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/odometer.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="assets/js/jquery.progressScroll.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
+  <script src="assets/js/jquery-3.7.0.min.js" defer></script>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/swiper-bundle.min.js" defer></script>
+  <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
+  <script src="assets/js/anime.min.js" defer></script>
+  <script src="assets/js/animate.js" defer></script>
+  <script src="assets/js/wow.min.js" defer></script>
+  <script src="assets/js/odometer.js" defer></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+  <script src="assets/js/jquery.progressScroll.min.js" defer></script>
+  <script src="assets/js/script.js" defer></script>
   <script>
     // Blog details content loader
     const blogData = {
@@ -355,7 +447,7 @@
     const blog = blogData[blogId];
     if (blog) {
       document.getElementById('blog-details-content').innerHTML = `
-        <img src="${blog.img}" alt="${blog.title}" class="blog-details-img">
+        <img src="${blog.img}" alt="${blog.title}" class="blog-details-img" loading="lazy">
         <div class="blog-details-title">${blog.title}</div>
         <div class="blog-details-meta">${blog.meta}</div>
         <div class="blog-details-content">${blog.content}</div>

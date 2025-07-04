@@ -26,6 +26,7 @@
       flex-wrap: wrap;
       gap: 40px;
       justify-content: center;
+      box-sizing: border-box;
     }
     .blog-card {
       background: #fff;
@@ -33,7 +34,6 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.07);
       overflow: hidden;
       width: 48%;
-      min-width: 380px;
       max-width: 600px;
       display: flex;
       flex-direction: column;
@@ -41,6 +41,7 @@
       cursor: pointer;
       text-decoration: none;
       color: inherit;
+      box-sizing: border-box;
     }
     .blog-card:hover {
       box-shadow: 0 6px 24px rgba(0,0,0,0.13);
@@ -76,27 +77,28 @@
     }
     @media (max-width: 1100px) {
       .blog-list { gap: 20px; }
-      .blog-card { width: 98%; min-width: 0; max-width: 100%; }
+      .blog-card { width: 98%; max-width: 100%; }
     }
     @media (max-width: 900px) {
       .blog-list { flex-direction: column; gap: 16px; align-items: center; }
-      .blog-card { width: 98%; max-width: 500px; }
+      .blog-card { width: 100%; max-width: 500px; }
     }
     @media (max-width: 700px) {
-      .blog-card-content { padding: 12px; }
+      .blog-list { margin: 40px 0 20px 0; }
+      .blog-card-content { padding: 10px; }
       .blog-card-title { font-size: 1.05rem; }
       .blog-card-meta { font-size: 0.85rem; }
       .blog-card-desc { font-size: 0.95rem; }
-      .blog-card img { height: 120px; }
+      .blog-card img { height: 110px; }
     }
     @media (max-width: 480px) {
-      .blog-list { gap: 10px; }
-      .blog-card { width: 100%; max-width: 100%; }
-      .blog-card-content { padding: 8px; }
-      .blog-card-title { font-size: 0.98rem; }
-      .blog-card-meta { font-size: 0.78rem; }
-      .blog-card-desc { font-size: 0.9rem; }
-      .blog-card img { height: 90px; }
+      .blog-list { gap: 8px; margin: 24px 0 10px 0; }
+      .blog-card { width: 100%; max-width: 100%; min-width: 0; }
+      .blog-card-content { padding: 6px; }
+      .blog-card-title { font-size: 0.95rem; }
+      .blog-card-meta { font-size: 0.75rem; }
+      .blog-card-desc { font-size: 0.88rem; }
+      .blog-card img { height: 70px; }
     }
     .blog-card-collapsed .blog-card-extra { display: none; }
     .blog-card-expanded .blog-card-extra { display: block; }
@@ -140,6 +142,24 @@
         height: 44px;
         font-size: 22px;
       }
+    }
+    /* Animated background and headings */
+    .section-banner .scrolling-text {
+      font-size: 7rem;
+      line-height: 1;
+    }
+    @media (max-width: 1100px) {
+      .section-banner .scrolling-text { font-size: 4.5rem; }
+    }
+    @media (max-width: 700px) {
+      .section-banner .scrolling-text { font-size: 2.7rem; }
+      .section-banner .heading-title { font-size: 1.2rem; }
+      .section-banner .subtitle { font-size: 0.98rem; }
+    }
+    @media (max-width: 480px) {
+      .section-banner .scrolling-text { font-size: 1.7rem; }
+      .section-banner .heading-title { font-size: 1rem; }
+      .section-banner .subtitle { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -251,14 +271,31 @@
     </header>
     <!--Header Section ======================-->
 
-    <header class="blog-header">
-      <h1>7F Design Blog</h1>
-     
+    <!-- Animated Background Text Section -->
+    <section class="section-banner position-relative pt-60">
+      <div class="section-full-width">
+        <div class="section-title-wrapper position-relative">
+          <div class="scroll-move">
+            <span class="scrolling-text display-1 fw-extra-bold stroke-title text-stroke stroke-opacity-20 stroke-primary lh-1">Blog</span>
+          </div>
+          <div class="container">
+            <div class="section-title section-separator">
+              <h2 class="fw-extra-bold heading-title separator lh-1">Insights & Inspiration</h2>
+              <p class="fs-4 fw-semibold mb-0 subtitle subtitle-width">Stories, guides, and trends from the world of architecture & interior design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Animated Background Text Section -->
+
+    <header class="blog-header text-center">
+      <h1 class="animated bounce infinite" style="margin: 0 auto; font-size: 2.5rem; display: inline-block;">7F Design Blog</h1>
     </header>
     <main>
       <section class="blog-list">
         <a href="blog-details.html?id=1" class="blog-card">
-          <img src="assets/images/blog-image-1.jpg" alt="How to Choose the Right Architectural Design Services in Delhi, India?">
+          <img src="assets/images/blog-image-1.jpg" alt="How to Choose the Right Architectural Design Services in Delhi, India?" loading="lazy">
           <div class="blog-card-content">
             <div class="blog-card-title">How to Choose the Right Architectural Design Services in Delhi, India?</div>
             <div class="blog-card-meta">Expert Guide / Delhi Architecture</div>
@@ -266,7 +303,7 @@
           </div>
         </a>
         <a href="blog-details.html?id=2" class="blog-card">
-          <img src="assets/images/blog-image-2.jpg" alt="Creating Timeless Elegance: Classic vs. Contemporary Styles">
+          <img src="assets/images/blog-image-2.jpg" alt="Creating Timeless Elegance: Classic vs. Contemporary Styles" loading="lazy">
           <div class="blog-card-content">
             <div class="blog-card-title">Creating Timeless Elegance: Classic vs. Contemporary Styles</div>
             <div class="blog-card-meta">23 November '23 / Interior</div>
@@ -363,7 +400,7 @@
         <i class="fab fa-whatsapp"></i>
       </a>
       <a href="tel:+917982432663" class="fab-btn call" aria-label="Call Us">
-        <i class="fas fa-phone-alt"></i>
+        <i class="fas fa-phone-alt" style="transform: scaleX(-1);"></i>
       </a>
     </div>
 
@@ -371,18 +408,18 @@
   <!-- pages -->
  
 
-  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-  <script src="assets/js/jquery-3.7.0.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/swiper-bundle.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/anime.min.js"></script>
-  <script src="assets/js/animate.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/odometer.js"></script>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="assets/js/jquery.progressScroll.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
+  <script src="assets/js/jquery-3.7.0.min.js" defer></script>
+  <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/swiper-bundle.min.js" defer></script>
+  <script src="assets/js/jquery.magnific-popup.min.js" defer></script>
+  <script src="assets/js/anime.min.js" defer></script>
+  <script src="assets/js/animate.js" defer></script>
+  <script src="assets/js/wow.min.js" defer></script>
+  <script src="assets/js/odometer.js" defer></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+  <script src="assets/js/jquery.progressScroll.min.js" defer></script>
+  <script src="assets/js/script.js" defer></script>
   <script>
     // Ensure call button always works
     document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
