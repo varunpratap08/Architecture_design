@@ -290,7 +290,7 @@
     <!-- End Animated Background Text Section -->
 
     <header class="blog-header text-center">
-      <h1 class="animated bounce infinite" style="margin: 0 auto; font-size: 2.5rem; display: inline-block;">7F Design Blog</h1>
+      <h1 style="margin: 0 auto; font-size: 2.5rem; display: inline-block;">7F Design Blog</h1>
     </header>
     <main>
       <section class="blog-list">
@@ -421,10 +421,8 @@
   <script src="assets/js/jquery.progressScroll.min.js" defer></script>
   <script src="assets/js/script.js" defer></script>
   <script>
-    // Ensure call button always works
     document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
-        // Only run on desktop: on mobile, browsers handle tel: links natively
         if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
           window.location.href = btn.getAttribute('href');
           setTimeout(function() {
@@ -432,7 +430,6 @@
             alert('If you have a calling app (like Skype) installed, this will open it. Otherwise, use your mobile device to call.');
           }, 500);
         }
-        // On mobile, let the browser handle it
       });
     });
 
