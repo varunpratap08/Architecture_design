@@ -190,7 +190,7 @@
 													<div class="col-xl-3">															
 														<div class="d-flex gap-30 flex-column py-40 ps-30 pe-40 separator h-100">
 															<div class="menu-description">
-																<a href="color-consltaion.html" class="menu-heading text-decoration-none link-hover-animation-1 pb-1">Colour Consultations</a>
+																<a href="color-consultation.html" class="menu-heading text-decoration-none link-hover-animation-1 pb-1">Colour Consultations</a>
 																<p class="small mb-0 pt-10">Develop a design concept</p>
 															</div>	
 															<!-- menu-description -->
@@ -700,19 +700,69 @@
 			<script src="customize/presets.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 		
-			<script>
-			  document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
-				btn.addEventListener('click', function(e) {
-				  if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-					window.location.href = btn.getAttribute('href');
-					setTimeout(function() {
-					  if (!document.hasFocus()) return;
-					  alert('If you have a calling app (like Skype) installed, this will open it. Otherwise, use your mobile device to call.');
-					}, 500);
-				  }
-				});
-			  });
-			</script>
+			<!-- Floating WhatsApp and Call Buttons -->
+<div class="floating-contact-buttons">
+  <a href="https://wa.me/917982432663" class="fab-btn whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="tel:+917982432663" class="fab-btn call" aria-label="Call Us">
+    <i class="fas fa-phone-alt" style="transform: scaleX(-1);"></i>
+  </a>
+</div>
+
+<style>
+.floating-contact-buttons {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fab-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.fab-btn.whatsapp { background: #25D366; }
+.fab-btn.call { background: #253b2f; }
+.fab-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.28); }
+@media (max-width: 600px) {
+  .floating-contact-buttons {
+    bottom: 16px;
+    right: 16px;
+    gap: 12px;
+  }
+  .fab-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+}
+</style>
+<script>
+  document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+        window.location.href = btn.getAttribute('href');
+        setTimeout(function() {
+          if (!document.hasFocus()) return;
+          alert('If you have a calling app (like Skype) installed, this will open it. Otherwise, use your mobile device to call.');
+        }, 500);
+      }
+    });
+  });
+</script>
+
 	</body>
 
 </html>
