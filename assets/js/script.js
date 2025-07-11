@@ -711,6 +711,44 @@ new WOW().init();
 
 })(jQuery);
 
+// === Formspree AJAX handler ===
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('form[action="https://formspree.io/f/xpwrvydg"]').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => { data[key] = value; });
+      // Find or create a response message element
+      let responseDiv = form.querySelector('.response');
+      if (!responseDiv) {
+        responseDiv = document.createElement('div');
+        responseDiv.className = 'response py-3';
+        form.appendChild(responseDiv);
+      }
+      responseDiv.innerHTML = '<p>Sending...</p>';
+      fetch('https://formspree.io/f/xpwrvydg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(response) {
+        if (response.ok) {
+          responseDiv.innerHTML = '<div class="alert alert-success">Thank you! We will contact you soon.</div>';
+          form.reset();
+        } else {
+          return response.json().then(function(data) {
+            throw new Error(data.error || 'Form submission failed.');
+          });
+        }
+      })
+      .catch(function(error) {
+        responseDiv.innerHTML = '<div class="alert alert-danger">There was an error. Please try again later.</div>';
+      });
+    });
+  });
+});
+
   document.addEventListener("DOMContentLoaded", function () {
     // make it as accordion for smaller screens
     if (window.innerWidth > 992) {
