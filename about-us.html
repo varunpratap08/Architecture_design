@@ -573,20 +573,6 @@
 			}
 			</style>
 
-			<script>
-			  document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
-				btn.addEventListener('click', function(e) {
-				  if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-					window.location.href = btn.getAttribute('href');
-					setTimeout(function() {
-					  if (!document.hasFocus()) return;
-					  alert('If you have a calling app (like Skype) installed, this will open it. Otherwise, use your mobile device to call.');
-					}, 500);
-				  }
-				});
-			  });
-			</script>
-
 	</body>
 
 </html>

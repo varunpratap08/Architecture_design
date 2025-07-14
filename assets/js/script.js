@@ -749,6 +749,20 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.fab-btn.call');
+  if (btn) {
+    console.log('Call button clicked:', btn); // Debug log
+    const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+    const phoneNumber = btn.getAttribute('href').replace('tel:', '');
+    if (!isMobile) {
+      e.preventDefault();
+      alert(`To call, please dial: ${phoneNumber} using your phone or a desktop calling app like Skype.`);
+    }
+    // On mobile: allow browser to handle the tel: link natively
+  }
+});
+
   document.addEventListener("DOMContentLoaded", function () {
     // make it as accordion for smaller screens
     if (window.innerWidth > 992) {

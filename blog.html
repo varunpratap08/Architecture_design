@@ -421,17 +421,19 @@
   <script src="assets/js/jquery.progressScroll.min.js" defer></script>
   <script src="assets/js/script.js" defer></script>
   <script>
-    document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
+  /* document.querySelectorAll('.fab-btn.call').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
-        if (!/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
-          window.location.href = btn.getAttribute('href');
-          setTimeout(function() {
-            if (!document.hasFocus()) return;
-            alert('If you have a calling app (like Skype) installed, this will open it. Otherwise, use your mobile device to call.');
-          }, 500);
-        }
+      const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+      const phoneNumber = btn.getAttribute('href').replace('tel:', '');
+    
+      if (!isMobile) {
+        e.preventDefault(); // Prevent desktop browsers from doing nothing
+        alert(`To call, please dial: ${phoneNumber} using your phone or a desktop calling app like Skype.`);
+      }
+      // On mobile: allow browser to handle the tel: link natively
       });
-    });
+    });*/
+    
 
     // Blog entry read more toggle
     document.querySelectorAll('.read-more-btn').forEach(function(btn) {
